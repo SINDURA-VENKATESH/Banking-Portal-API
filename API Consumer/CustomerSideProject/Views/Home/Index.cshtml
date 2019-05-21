@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CustomerSideProject.Models.customers_table>
+
+@{
+    ViewBag.Title = "Customer Details";
+}
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cusid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cusname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cusaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cusstatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cusid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cusname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cusaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cusstatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
+
