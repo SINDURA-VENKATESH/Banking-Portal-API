@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingPortal", "BankingPortal\BankingPortal.csproj", "{5D3EE19B-8691-4EDF-B3F4-EE02BA7EDAE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIController.Tests", "APIController.Tests\APIController.Tests.csproj", "{14BDE40F-6F35-43D6-A04A-E90A00106E6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D3EE19B-8691-4EDF-B3F4-EE02BA7EDAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3EE19B-8691-4EDF-B3F4-EE02BA7EDAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3EE19B-8691-4EDF-B3F4-EE02BA7EDAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3EE19B-8691-4EDF-B3F4-EE02BA7EDAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BDE40F-6F35-43D6-A04A-E90A00106E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BDE40F-6F35-43D6-A04A-E90A00106E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BDE40F-6F35-43D6-A04A-E90A00106E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BDE40F-6F35-43D6-A04A-E90A00106E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

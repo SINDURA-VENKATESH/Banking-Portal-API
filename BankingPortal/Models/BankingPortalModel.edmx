@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="cusid" />
+          </Key>
+          <Property Name="cusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cusname" Type="varchar" MaxLength="20" />
+          <Property Name="cusaddress" Type="varchar" MaxLength="100" />
+          <Property Name="cusstatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="customers_table">
+          <Key>
+            <PropertyRef Name="cusid" />
+          </Key>
+          <Property Name="cusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cusname" Type="varchar" MaxLength="20" />
+          <Property Name="cusaddress" Type="varchar" MaxLength="100" />
+          <Property Name="cusstatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Function Name="sp_addcustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers_table" EntityType="Self.customers_table" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cusid" />
+          </Key>
+          <Property Name="cusid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cusname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cusaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cusstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="customers_table" EntityType="masterModel.customers_table" />
+          <FunctionImport Name="sp_addcustomer">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="customers_table">
+          <Key>
+            <PropertyRef Name="cusid" />
+          </Key>
+          <Property Name="cusid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cusname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cusaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cusstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="masterModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="cusid" ColumnName="cusid" />
+                <ScalarProperty Name="cusname" ColumnName="cusname" />
+                <ScalarProperty Name="cusaddress" ColumnName="cusaddress" />
+                <ScalarProperty Name="cusstatus" ColumnName="cusstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers_table">
+            <EntityTypeMapping TypeName="masterModel.customers_table">
+              <MappingFragment StoreEntitySet="customers_table">
+                <ScalarProperty Name="cusstatus" ColumnName="cusstatus" />
+                <ScalarProperty Name="cusaddress" ColumnName="cusaddress" />
+                <ScalarProperty Name="cusname" ColumnName="cusname" />
+                <ScalarProperty Name="cusid" ColumnName="cusid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_addcustomer" FunctionName="masterModel.Store.sp_addcustomer" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
