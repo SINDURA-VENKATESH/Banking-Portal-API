@@ -30,18 +30,18 @@ namespace BankingPortal.Models
      
         public virtual DbSet<customers_table> customers_table { get; set; }
 
-        DbSet<customers_table> ImasterEntities.customers_table
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        //DbSet<customers_table> ImasterEntities.customers_table
+        //{
+        //    get
+        //    {
+        //        throw new NotImplementedException();
+        //    }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //    set
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
 
         public virtual int sp_addcustomer(string name, string address, string status, ObjectParameter id)
         {

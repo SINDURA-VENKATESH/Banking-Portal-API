@@ -12,15 +12,17 @@ namespace BankingPortal.Controllers
     //[Authorize]
     public class ValuesController : ApiController
     {
-        ImasterEntities dbobj = new masterEntities();
-        List<Customers> customers = new List<Customers>();
+         
+        private ImasterEntities dbobj = new masterEntities();
+      
 
+     
         public ValuesController()
         { }
 
         public ValuesController(ImasterEntities db)
         {
-            this.dbobj = db;
+            dbobj = db;
         }
 
         // GET api/values
@@ -31,10 +33,10 @@ namespace BankingPortal.Controllers
 
 
 
-        public IEnumerable<customers_table> get(int id)
+        public customers_table get(int? id)
         {
 
-            return dbobj.customers_table.Where(c => c.cusid == id).ToList();
+            return dbobj.customers_table.Where(c => c.cusid == id).FirstOrDefault();
         }
 
         // POST api/values

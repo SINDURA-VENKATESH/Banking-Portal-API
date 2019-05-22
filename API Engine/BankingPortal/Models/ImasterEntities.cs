@@ -1,9 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 
 namespace BankingPortal.Models
 {
-    public interface ImasterEntities
+    public interface ImasterEntities:IDisposable
     {
         DbSet<customers_table> customers_table { get; set; }
 
