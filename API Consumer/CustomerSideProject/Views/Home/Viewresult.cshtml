@@ -1,49 +1,50 @@
-﻿@model IEnumerable<CustomerSideProject.Models.customers_table>
+﻿@model CustomerSideProject.Models.customers_table
 
 @{
-    ViewBag.Title = "Viewresult";
+    ViewBag.Title = "Viewresult1";
 }
 
+<h2>Viewresult1</h2>
 
-
-
-<table class="table">
-    <tr>
-        <th>
+<div>
+    <h4>customers_table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
             @Html.DisplayNameFor(model => model.cusid)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cusid)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.cusname)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cusname)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.cusaddress)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cusaddress)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.cusstatus)
-        </th>
-        <th></th>
-    </tr>
+        </dt>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cusid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cusname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cusaddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cusstatus)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+        <dd>
+            @Html.DisplayFor(model => model.cusstatus)
+        </dd>
 
-</table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

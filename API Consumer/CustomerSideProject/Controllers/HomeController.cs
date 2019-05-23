@@ -48,7 +48,7 @@ namespace CustomerSideProject.Controllers
         [HttpPost]
         public async Task<ActionResult> Viewaftersearch(int? id)
         {
-            List<customers_table> cusdataaftersearch = new List<customers_table>();
+            customers_table cusdataaftersearch = new customers_table();
             using (var client = new HttpClient())
             {
 
@@ -60,7 +60,7 @@ namespace CustomerSideProject.Controllers
                 if (res.IsSuccessStatusCode)
                 {
                     var custresponse = res.Content.ReadAsStringAsync().Result;
-                    cusdataaftersearch = JsonConvert.DeserializeObject<List<customers_table>>(custresponse);
+                    cusdataaftersearch = JsonConvert.DeserializeObject<customers_table>(custresponse);
                 }
                 Session["ResultList"] = cusdataaftersearch;
                 return RedirectToAction("Viewresult");
@@ -70,8 +70,8 @@ namespace CustomerSideProject.Controllers
         //differene page to view result after search(GET/id)
         public ActionResult Viewresult()
         {
-            List<customers_table> cuslist = new List<customers_table>();
-            cuslist = Session["ResultList"] as List<customers_table>;
+           customers_table cuslist = new customers_table();
+            cuslist = Session["ResultList"] as customers_table;
 
             return View(cuslist);
         }
