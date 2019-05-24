@@ -1,0 +1,50 @@
+﻿@model CustomerSideProject.Models.login_table
+
+@{
+    ViewBag.Title = "Token";
+}
+
+<h2>Token</h2>
+
+<div>
+    <h4>login_table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.login_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.login_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passwords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passwords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roleofuser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roleofuser)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
