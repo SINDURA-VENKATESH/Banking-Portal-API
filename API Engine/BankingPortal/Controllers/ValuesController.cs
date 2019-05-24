@@ -12,11 +12,11 @@ namespace BankingPortal.Controllers
     //[Authorize]
     public class ValuesController : ApiController
     {
-         
-        private ImasterEntities dbobj = new masterEntities();
-      
 
-     
+        private ImasterEntities dbobj = new masterEntities();
+
+
+
         public ValuesController()
         { }
 
@@ -33,7 +33,7 @@ namespace BankingPortal.Controllers
 
 
 
-        public customers_table get(int? id)
+        public customers_table get(int id)
         {
 
             return dbobj.customers_table.Where(c => c.cusid == id).FirstOrDefault();
@@ -42,10 +42,12 @@ namespace BankingPortal.Controllers
         // POST api/values
         public void Post([FromBody]customers_table value)
         {
-            ObjectParameter objpar = new ObjectParameter("id",typeof(int));
+            ObjectParameter objpar = new ObjectParameter("id", typeof(int));
             int rowsupdated = dbobj.sp_addcustomer(value.cusname, value.cusaddress, value.cusstatus, objpar);
 
         }
+
+        
 
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)

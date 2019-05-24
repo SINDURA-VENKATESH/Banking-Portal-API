@@ -22,27 +22,11 @@ namespace BankingPortal.Models
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-     
+        
+        
         public virtual DbSet<customers_table> customers_table { get; set; }
-
-        //DbSet<customers_table> ImasterEntities.customers_table
-        //{
-        //    get
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    set
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
-
+        public virtual DbSet<login_table> login_table { get; set; }
+    
         public virtual int sp_addcustomer(string name, string address, string status, ObjectParameter id)
         {
             var nameParameter = name != null ?

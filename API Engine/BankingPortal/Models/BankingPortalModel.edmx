@@ -23,6 +23,16 @@
           <Property Name="cusaddress" Type="varchar" MaxLength="100" />
           <Property Name="cusstatus" Type="varchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="login_table">
+          <Key>
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="passwords" Type="varchar" MaxLength="50" />
+          <Property Name="roleofuser" Type="varchar" MaxLength="50" />
+          <Property Name="token" Type="varchar" MaxLength="30" />
+        </EntityType>
         <Function Name="sp_addcustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
           <Parameter Name="address" Type="varchar" Mode="In" />
@@ -32,6 +42,7 @@
         <EntityContainer Name="masterModelStoreContainer">
           <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customers_table" EntityType="Self.customers_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login_table" EntityType="Self.login_table" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -55,6 +66,7 @@
             <Parameter Name="status" Mode="In" Type="String" />
             <Parameter Name="id" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="login_table" EntityType="masterModel.login_table" />
         </EntityContainer>
         <EntityType Name="customers_table">
           <Key>
@@ -64,6 +76,16 @@
           <Property Name="cusname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="cusaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cusstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="login_table">
+          <Key>
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roleofuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="token" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -92,6 +114,17 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_addcustomer" FunctionName="masterModel.Store.sp_addcustomer" />
+          <EntitySetMapping Name="login_table">
+            <EntityTypeMapping TypeName="masterModel.login_table">
+              <MappingFragment StoreEntitySet="login_table">
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="roleofuser" ColumnName="roleofuser" />
+                <ScalarProperty Name="passwords" ColumnName="passwords" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -14,5 +14,7 @@ namespace BankingPortal
         {
             ConfigureAuth(app);
         }
+
+        
     }
 }

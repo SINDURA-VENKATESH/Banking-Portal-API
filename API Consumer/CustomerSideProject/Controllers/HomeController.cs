@@ -20,6 +20,7 @@ namespace CustomerSideProject.Controllers
         public async Task<ActionResult> Index()
         {
             List<customers_table> customerdetails = new List<customers_table>();
+            
             using (var client = new HttpClient())
             {
 
@@ -101,6 +102,38 @@ namespace CustomerSideProject.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> Login(login_table obj)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseurl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var myContent = JsonConvert.SerializeObject(obj);
+                var content = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var bytecontent = new ByteArrayContent(content);
+                bytecontent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                HttpResponseMessage res = await client.PostAsync("api/Login/Post", bytecontent);
+               
+                if(res.IsSuccessStatusCode)
+                {
+                    string responseStream = await res.Content.ReadAsStringAsync();
+                    Response.Write(responseStream);
+                    
+                }
+                return View();
+
+            }
+        }
+        public ActionResult Token(login_table details)
+        {
+            return View(details);
         }
     }
 }
