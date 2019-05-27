@@ -10,10 +10,11 @@ using System.Web.Http;
 namespace BankingPortal.Controllers
 {
 
+    [AllowAnonymous]
     public class LoginController : ApiController
     {
         private ImasterEntities dbobj = new masterEntities();
-        public HttpResponseMessage Post(/*[FromBody] login_table details*/string Username="ADMIN",string Password= "ADMIN")
+        public HttpResponseMessage Post(/*[FromBody] login_table details*/string Username,string Password)
         {
             List<login_table> loginlist = dbobj.login_table.ToList();
             login_table logindetail = loginlist.Where(x => x.username == Username && x.passwords == Password).FirstOrDefault();
@@ -24,7 +25,7 @@ namespace BankingPortal.Controllers
             else
             {
 
-                string token = AuthenticationModule.GenerateTokenForUser(Username);
+                string token = JwtManager.GenerateTokenForUser(Username);
                 return Request.CreateResponse(HttpStatusCode.OK, token, Configuration.Formatters.JsonFormatter);
             }
 

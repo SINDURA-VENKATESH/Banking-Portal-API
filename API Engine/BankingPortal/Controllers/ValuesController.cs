@@ -10,8 +10,9 @@ using System.Web.Http.Filters;
 using NLog;
 namespace BankingPortal.Controllers
 {
-    [JWTAuthenticationFilter]
-    [Authorize]
+
+
+    [JwtAuthentication]
     public class ValuesController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -28,8 +29,8 @@ namespace BankingPortal.Controllers
         }
 
         // GET api/values
-   
-       
+
+        
         public IEnumerable<customers_table> get()
         {
             logger.Info("This is customer list" + Environment.NewLine + DateTime.Now);

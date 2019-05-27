@@ -16,14 +16,15 @@ namespace BankingPortal
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            config.Filters.Add(new JWTAuthenticationFilter());
-               
-            config.Filters.Add(new LoggingFilterAttribute());
-            // Web API routes
-            config.MapHttpAttributeRoutes();
+            //config.SuppressDefaultHostAuthentication();
+            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            //config.Filters.Add(new JWTAuthenticationFilter());
 
+            //config.Filters.Add(new LoggingFilterAttribute());
+            // Web API routes
+            //
+            config.Filters.Add(new AuthorizeAttribute());
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
