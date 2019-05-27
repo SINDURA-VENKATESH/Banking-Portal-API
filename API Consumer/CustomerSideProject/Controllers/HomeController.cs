@@ -125,7 +125,10 @@ namespace CustomerSideProject.Controllers
                 {
                     string responseStream = await res.Content.ReadAsStringAsync();
                     Response.Write(responseStream);
-                    
+
+                    Response.Write("*******");
+                    Console.Write(bytecontent);
+
                 }
                 return View();
 

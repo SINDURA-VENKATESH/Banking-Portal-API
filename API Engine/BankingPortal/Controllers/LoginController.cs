@@ -13,10 +13,10 @@ namespace BankingPortal.Controllers
     public class LoginController : ApiController
     {
         private ImasterEntities dbobj = new masterEntities();
-        public HttpResponseMessage Post([FromBody] login_table details)
+        public HttpResponseMessage Post(/*[FromBody] login_table details*/string Username="ADMIN",string Password= "ADMIN")
         {
             List<login_table> loginlist = dbobj.login_table.ToList();
-            login_table logindetail = loginlist.Where(x => x.username == details.username && x.passwords == details.passwords).FirstOrDefault();
+            login_table logindetail = loginlist.Where(x => x.username == Username && x.passwords == Password).FirstOrDefault();
             if(logindetail==null)
             {
                 return Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid User", Configuration.Formatters.JsonFormatter);
@@ -24,7 +24,7 @@ namespace BankingPortal.Controllers
             else
             {
 
-                string token = AuthenticationModule.GenerateTokenForUser(details.username);
+                string token = AuthenticationModule.GenerateTokenForUser(Username);
                 return Request.CreateResponse(HttpStatusCode.OK, token, Configuration.Formatters.JsonFormatter);
             }
 

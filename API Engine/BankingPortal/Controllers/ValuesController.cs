@@ -6,13 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Web.Http.Filters;
+using NLog;
 namespace BankingPortal.Controllers
 {
-    //[Authorize]
+    [JWTAuthenticationFilter]
+    [Authorize]
     public class ValuesController : ApiController
     {
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private ImasterEntities dbobj = new masterEntities();
 
 
@@ -26,8 +28,11 @@ namespace BankingPortal.Controllers
         }
 
         // GET api/values
+   
+       
         public IEnumerable<customers_table> get()
         {
+            logger.Info("This is customer list" + Environment.NewLine + DateTime.Now);
             return dbobj.customers_table.ToList();
         }
 
@@ -35,7 +40,7 @@ namespace BankingPortal.Controllers
 
         public customers_table get(int id)
         {
-
+            logger.Debug("This is debug" + Environment.NewLine + DateTime.Now);
             return dbobj.customers_table.Where(c => c.cusid == id).FirstOrDefault();
         }
 
