@@ -14,7 +14,7 @@ namespace WebApi.ActionFilters
     {
         public override void OnActionExecuting(HttpActionContext filterContext)
         {
-            GlobalConfiguration.Configuration.Services.Replace(typeof(ITraceWriter), new NLogger());
+            GlobalConfiguration.Configuration.Services.Replace(typeof(ITraceWriter), new LogClass());
             var trace = GlobalConfiguration.Configuration.Services.GetTraceWriter();
             trace.Info(filterContext.Request, "Controller : " + filterContext.ControllerContext.ControllerDescriptor.ControllerType.FullName + Environment.NewLine + "Action : " + filterContext.ActionDescriptor.ActionName, "JSON", filterContext.ActionArguments);
         }

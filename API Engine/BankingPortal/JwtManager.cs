@@ -67,7 +67,7 @@ namespace BankingPortal
 
             catch (Exception)
             {
-                //should write log
+               
                 return null;
             }
         }

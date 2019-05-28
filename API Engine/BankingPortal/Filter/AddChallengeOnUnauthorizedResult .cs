@@ -27,7 +27,7 @@ namespace BankingPortal.Filter
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                // Only add one challenge per authentication scheme.
+                
                 if (response.Headers.WwwAuthenticate.All(h => h.Scheme != Challenge.Scheme))
                 {
                     response.Headers.WwwAuthenticate.Add(Challenge);

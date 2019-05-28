@@ -21,7 +21,7 @@ namespace BankingPortal
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configuration.Services.Replace(typeof(ITraceWriter), new NLogger());
+           
 
         }
     }

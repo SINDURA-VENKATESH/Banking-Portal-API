@@ -8,11 +8,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using NLog;
+using BankingPortal.Helpers;
+
 namespace BankingPortal.Controllers
 {
 
 
     [JwtAuthentication]
+    
     public class ValuesController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -30,22 +33,23 @@ namespace BankingPortal.Controllers
 
         // GET api/values
 
-        
+        [LogClass]
         public IEnumerable<customers_table> get()
         {
-            logger.Info("This is customer list" + Environment.NewLine + DateTime.Now);
+            
             return dbobj.customers_table.ToList();
         }
 
 
-
+        [LogClass]
         public customers_table get(int id)
         {
-            logger.Debug("This is debug" + Environment.NewLine + DateTime.Now);
+            
             return dbobj.customers_table.Where(c => c.cusid == id).FirstOrDefault();
         }
 
         // POST api/values
+        [LogClass]
         public void Post([FromBody]customers_table value)
         {
             ObjectParameter objpar = new ObjectParameter("id", typeof(int));
