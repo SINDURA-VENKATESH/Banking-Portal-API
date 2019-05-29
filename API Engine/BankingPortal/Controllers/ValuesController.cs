@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using NLog;
-using BankingPortal.Helpers;
+
 
 namespace BankingPortal.Controllers
 {
@@ -18,10 +18,11 @@ namespace BankingPortal.Controllers
     
     public class ValuesController : ApiController
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        
         private ImasterEntities dbobj = new masterEntities();
 
-
+       
+        
 
         public ValuesController()
         { }
@@ -33,15 +34,15 @@ namespace BankingPortal.Controllers
 
         // GET api/values
 
-        [LogClass]
+        
         public IEnumerable<customers_table> get()
-        {
-            
+        { 
+        
             return dbobj.customers_table.ToList();
         }
 
 
-        [LogClass]
+       
         public customers_table get(int id)
         {
             
@@ -49,7 +50,7 @@ namespace BankingPortal.Controllers
         }
 
         // POST api/values
-        [LogClass]
+       
         public void Post([FromBody]customers_table value)
         {
             ObjectParameter objpar = new ObjectParameter("id", typeof(int));

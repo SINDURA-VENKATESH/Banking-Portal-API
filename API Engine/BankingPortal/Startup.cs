@@ -4,6 +4,10 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 using Net451.Microsoft.Extensions.DependencyInjection;
+using NLog;
+using Castle.Core.Configuration;
+using System.IO;
+
 
 [assembly: OwinStartup(typeof(BankingPortal.Startup))]
 
@@ -15,7 +19,17 @@ namespace BankingPortal
         {
             ConfigureAuth(app);
         }
-       
+
+        
+
+      
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+
+           
+            
+        }
 
 
     }
