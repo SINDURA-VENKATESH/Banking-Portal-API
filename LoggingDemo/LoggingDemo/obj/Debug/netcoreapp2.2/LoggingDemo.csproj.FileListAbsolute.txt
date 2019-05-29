@@ -1,0 +1,14 @@
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\bin\Debug\netcoreapp2.2\LoggingDemo.deps.json
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\bin\Debug\netcoreapp2.2\LoggingDemo.runtimeconfig.json
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\bin\Debug\netcoreapp2.2\LoggingDemo.runtimeconfig.dev.json
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\bin\Debug\netcoreapp2.2\LoggingDemo.dll
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.csprojAssemblyReference.cache
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.csproj.CoreCompileInputs.cache
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.RazorAssemblyInfo.cache
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.RazorAssemblyInfo.cs
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.AssemblyInfoInputs.cache
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.AssemblyInfo.cs
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.RazorTargetAssemblyInfo.cache
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\bin\Debug\netcoreapp2.2\LoggingDemo.pdb
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.dll
+C:\Users\Venky\Desktop\LoggingDemo\LoggingDemo\LoggingDemo\obj\Debug\netcoreapp2.2\LoggingDemo.pdb

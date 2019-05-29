@@ -1,0 +1,8 @@
+2019-05-29 09:21:31.8742 INFO Information has been logged at: 5/29/2019 9:21:30 AM
+2019-05-29 09:21:32.8785 WARN Warning has been logged at: 5/29/2019 9:21:32 AM
+2019-05-29 09:21:32.8913 DEBUG Debug has been logged at: 5/29/2019 9:21:32 AM
+2019-05-29 09:21:32.9067 ERROR Error has been logged at: 5/29/2019 9:21:32 AM
+2019-05-29 09:35:36.1997 INFO Information has been logged at: 5/29/2019 9:35:21 AM
+2019-05-29 09:35:36.9702 WARN Warning has been logged at: 5/29/2019 9:35:36 AM
+2019-05-29 09:35:36.9953 DEBUG Debug has been logged at: 5/29/2019 9:35:36 AM
+2019-05-29 09:35:37.0173 ERROR Error has been logged at: 5/29/2019 9:35:37 AM
