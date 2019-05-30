@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "GetDataFromCustomer";
+}
+
+<h2>GetDataFromCustomer</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>RestaurantData</h4>
+        <hr />
+        <div>
+            @Html.Label("Number of People")
+        </div>
+        <div>
+            @Html.Editor("Number of People")
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
