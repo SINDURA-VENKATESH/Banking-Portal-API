@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+    <EntitySetMapping Name="customerdetails">
+      <EntityTypeMapping TypeName="masterModel.customerdetail">
+        <MappingFragment StoreEntitySet="customerdetails">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="table_number" ColumnName="table_number" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="checkedout" ColumnName="checkedout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabledetails">
+      <EntityTypeMapping TypeName="masterModel.tabledetail">
+        <MappingFragment StoreEntitySet="tabledetails">
+          <ScalarProperty Name="table_number" ColumnName="table_number" />
+          <ScalarProperty Name="capaciyoftable" ColumnName="capaciyoftable" />
+          <ScalarProperty Name="istableoccupies" ColumnName="istableoccupies" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_updateoccupancystatus" FunctionName="masterModel.Store.sp_updateoccupancystatus" />
+  </EntityContainerMapping>
+</Mapping>

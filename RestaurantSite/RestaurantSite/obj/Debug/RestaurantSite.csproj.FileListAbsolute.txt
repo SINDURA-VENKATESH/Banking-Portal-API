@@ -72,6 +72,6 @@ F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\bin\Microsoft.Owin.
 F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\bin\Microsoft.Owin.Security.Twitter.xml
 F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\bin\System.Web.Http.Owin.xml
-F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\obj\Debug\RestaurantSite.csprojResolveAssemblyReference.cache
 F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\obj\Debug\RestaurantSite.dll
 F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\obj\Debug\RestaurantSite.pdb
+F:\GitRepository\Banking-Portl\RestaurantSite\RestaurantSite\obj\Debug\RestaurantSite.csprojResolveAssemblyReference.cache

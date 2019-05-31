@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="customerdetails">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="int" Nullable="false" />
+    <Property Name="table_number" Type="int" />
+    <Property Name="customer_name" Type="varchar" MaxLength="20" />
+    <Property Name="mobile_no" Type="bigint" />
+    <Property Name="checkedout" Type="bit" />
+  </EntityType>
+  <EntityType Name="tabledetails">
+    <Key>
+      <PropertyRef Name="table_number" />
+    </Key>
+    <Property Name="table_number" Type="int" Nullable="false" />
+    <Property Name="capaciyoftable" Type="int" />
+    <Property Name="istableoccupies" Type="bit" />
+  </EntityType>
+  <Association Name="FK__customerd__table__7C3A67EB">
+    <End Role="tabledetails" Type="Self.tabledetails" Multiplicity="0..1" />
+    <End Role="customerdetails" Type="Self.customerdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tabledetails">
+        <PropertyRef Name="table_number" />
+      </Principal>
+      <Dependent Role="customerdetails">
+        <PropertyRef Name="table_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_updateoccupancystatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableno" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="masterModelStoreContainer">
+    <EntitySet Name="customerdetails" EntityType="Self.customerdetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tabledetails" EntityType="Self.tabledetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__customerd__table__7C3A67EB" Association="Self.FK__customerd__table__7C3A67EB">
+      <End Role="tabledetails" EntitySet="tabledetails" />
+      <End Role="customerdetails" EntitySet="customerdetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

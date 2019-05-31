@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customerdetails">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="int" Nullable="false" />
+          <Property Name="table_number" Type="int" />
+          <Property Name="customer_name" Type="varchar" MaxLength="20" />
+          <Property Name="mobile_no" Type="bigint" />
+          <Property Name="checkedout" Type="bit" />
+        </EntityType>
+        <EntityType Name="tabledetails">
+          <Key>
+            <PropertyRef Name="table_number" />
+          </Key>
+          <Property Name="table_number" Type="int" Nullable="false" />
+          <Property Name="capaciyoftable" Type="int" />
+          <Property Name="istableoccupies" Type="bit" />
+        </EntityType>
+        <Association Name="FK__customerd__table__7C3A67EB">
+          <End Role="tabledetails" Type="Self.tabledetails" Multiplicity="0..1" />
+          <End Role="customerdetails" Type="Self.customerdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabledetails">
+              <PropertyRef Name="table_number" />
+            </Principal>
+            <Dependent Role="customerdetails">
+              <PropertyRef Name="table_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_updateoccupancystatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableno" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="customerdetails" EntityType="Self.customerdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabledetails" EntityType="Self.tabledetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__customerd__table__7C3A67EB" Association="Self.FK__customerd__table__7C3A67EB">
+            <End Role="tabledetails" EntitySet="tabledetails" />
+            <End Role="customerdetails" EntitySet="customerdetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customerdetail">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="Int32" Nullable="false" />
+          <Property Name="table_number" Type="Int32" />
+          <Property Name="customer_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mobile_no" Type="Int64" />
+          <Property Name="checkedout" Type="Boolean" />
+          <NavigationProperty Name="tabledetail" Relationship="Self.FK__customerd__table__7C3A67EB" FromRole="customerdetails" ToRole="tabledetails" />
+        </EntityType>
+        <EntityType Name="tabledetail">
+          <Key>
+            <PropertyRef Name="table_number" />
+          </Key>
+          <Property Name="table_number" Type="Int32" Nullable="false" />
+          <Property Name="capaciyoftable" Type="Int32" />
+          <Property Name="istableoccupies" Type="Boolean" />
+          <NavigationProperty Name="customerdetails" Relationship="Self.FK__customerd__table__7C3A67EB" FromRole="tabledetails" ToRole="customerdetails" />
+        </EntityType>
+        <Association Name="FK__customerd__table__7C3A67EB">
+          <End Role="tabledetails" Type="Self.tabledetail" Multiplicity="0..1" />
+          <End Role="customerdetails" Type="Self.customerdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabledetails">
+              <PropertyRef Name="table_number" />
+            </Principal>
+            <Dependent Role="customerdetails">
+              <PropertyRef Name="table_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customerdetails" EntityType="Self.customerdetail" />
+          <EntitySet Name="tabledetails" EntityType="Self.tabledetail" />
+          <AssociationSet Name="FK__customerd__table__7C3A67EB" Association="Self.FK__customerd__table__7C3A67EB">
+            <End Role="tabledetails" EntitySet="tabledetails" />
+            <End Role="customerdetails" EntitySet="customerdetails" />
+          </AssociationSet>
+          <FunctionImport Name="sp_updateoccupancystatus">
+            <Parameter Name="tableno" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="customerdetails">
+            <EntityTypeMapping TypeName="masterModel.customerdetail">
+              <MappingFragment StoreEntitySet="customerdetails">
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="table_number" ColumnName="table_number" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="checkedout" ColumnName="checkedout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabledetails">
+            <EntityTypeMapping TypeName="masterModel.tabledetail">
+              <MappingFragment StoreEntitySet="tabledetails">
+                <ScalarProperty Name="table_number" ColumnName="table_number" />
+                <ScalarProperty Name="capaciyoftable" ColumnName="capaciyoftable" />
+                <ScalarProperty Name="istableoccupies" ColumnName="istableoccupies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_updateoccupancystatus" FunctionName="masterModel.Store.sp_updateoccupancystatus" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

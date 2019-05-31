@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="customerdetail">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="Int32" Nullable="false" />
+    <Property Name="table_number" Type="Int32" />
+    <Property Name="customer_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_no" Type="Int64" />
+    <Property Name="checkedout" Type="Boolean" />
+    <NavigationProperty Name="tabledetail" Relationship="Self.FK__customerd__table__7C3A67EB" FromRole="customerdetails" ToRole="tabledetails" />
+  </EntityType>
+  <EntityType Name="tabledetail">
+    <Key>
+      <PropertyRef Name="table_number" />
+    </Key>
+    <Property Name="table_number" Type="Int32" Nullable="false" />
+    <Property Name="capaciyoftable" Type="Int32" />
+    <Property Name="istableoccupies" Type="Boolean" />
+    <NavigationProperty Name="customerdetails" Relationship="Self.FK__customerd__table__7C3A67EB" FromRole="tabledetails" ToRole="customerdetails" />
+  </EntityType>
+  <Association Name="FK__customerd__table__7C3A67EB">
+    <End Role="tabledetails" Type="Self.tabledetail" Multiplicity="0..1" />
+    <End Role="customerdetails" Type="Self.customerdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tabledetails">
+        <PropertyRef Name="table_number" />
+      </Principal>
+      <Dependent Role="customerdetails">
+        <PropertyRef Name="table_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="customerdetails" EntityType="Self.customerdetail" />
+    <EntitySet Name="tabledetails" EntityType="Self.tabledetail" />
+    <AssociationSet Name="FK__customerd__table__7C3A67EB" Association="Self.FK__customerd__table__7C3A67EB">
+      <End Role="tabledetails" EntitySet="tabledetails" />
+      <End Role="customerdetails" EntitySet="customerdetails" />
+    </AssociationSet>
+    <FunctionImport Name="sp_updateoccupancystatus">
+      <Parameter Name="tableno" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
